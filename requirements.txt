@@ -1,0 +1,7 @@
+langchain
+openai
+sendgrid
+python-dotenv
+streamlit
+fastapi
+uvicorn
