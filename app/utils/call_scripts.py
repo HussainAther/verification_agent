@@ -23,3 +23,26 @@ Could you confirm if this institution reports to NSC, or if we should verify dir
 Thank you!
 """
 
+def international_call_script(applicant_name):
+    return f"""\
+Hello, I’m calling regarding the international academic verification for a candidate named {applicant_name}.
+
+Could you please confirm what documentation you require for degree verification?
+We can provide a government-issued ID and a native-language diploma if needed.
+
+Is there a verification contact or form you prefer we use?
+
+Thank you!
+"""
+
+def name_discrepancy_call_script(applicant_name, aliases):
+    alias_str = ", ".join(aliases)
+    return f"""\
+Hi, I’m calling regarding a verification for {applicant_name}. 
+
+We noticed that the applicant might also be known as: {alias_str}.
+Can you confirm if these names appear in your records, or if we need to submit documentation?
+
+Thank you!
+"""
+
