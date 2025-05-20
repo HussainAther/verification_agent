@@ -1,0 +1,16 @@
+{
+  "A001": {
+    "name": "John Doe",
+    "email": "john@example.com",
+    "institution": "NYU",
+    "course": "Computer Science",
+    "start_date": "2017",
+    "end_date": "2021",
+    "nationality": "USA",
+    "status": "pending",
+    "reminders_sent": 0,
+    "last_updated": "2025-05-19T00:00:00Z",
+    "history": []
+  }
+}
+
