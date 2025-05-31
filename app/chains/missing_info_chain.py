@@ -16,4 +16,10 @@ Return your response as a plain list of missing fields.
 """
 )
 
+def get_missing_fields(applicant_data: dict) -> str:
+    if not applicant_data.get("institution"):
+        return "Missing fields: institution"
+    return "All required fields present"
+
+
 missing_info_chain = LLMChain(llm=ChatOpenAI(temperature=0), prompt=prompt)
