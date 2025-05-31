@@ -4,19 +4,20 @@ from app.tools.email import send_email
 
 REMINDER_LIMIT = 3
 
-def should_send_reminder(applicant_id):
-    data = get_applicant(applicant_id)
-    if not data:
+def should_send_reminder(sent_timestamps):
+    now = datetime.utcnow()
+    if len(sent_timestamps) >= 3:
         return False
-
-    last_updated = datetime.fromisoformat(data["last_updated"])
-    reminders_sent = data.get("reminders_sent", 0)
-
-    # Send reminder if it's been at least 24 hours and fewer than 3 reminders sent
-    if reminders_sent < REMINDER_LIMIT and datetime.utcnow() - last_updated >= timedelta(hours=24):
+    if not sent_timestamps:
         return True
-    return False
-
+    return now - sent_timestamps[-1] >= timedelta(hours=24)
+def should_send_reminder(sent_timestamps):
+    now = datetime.utcnow()
+    if len(sent_timestamps) >= 3:
+        return False
+    if not sent_timestamps:
+        return True
+    return now - sent_timestamps[-1] >= timedelta(hours=24)
 def send_reminder_if_needed(applicant_id, email, name):
     if should_send_reminder(applicant_id):
         count = increment_reminder(applicant_id)
