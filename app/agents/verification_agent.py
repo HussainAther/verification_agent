@@ -1,4 +1,5 @@
 from app.tools.email import send_email_tool
+from app.chains.missing_info_chain import get_missing_fields
 from langchain.agents import initialize_agent, Tool
 from langchain.chat_models import ChatOpenAI
 
@@ -10,7 +11,7 @@ def run_verification_flow(applicant_id):
         "institution": "",
         "course": "Computer Science"
     }
-
+    missing = get_missing_fields(applicant)
     if not applicant_data.get("institution"):
         agent = initialize_agent(
             tools=[send_email_tool],
